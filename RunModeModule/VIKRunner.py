@@ -76,4 +76,6 @@ if __name__ == "__main__":
         runner.run(test_suite_for_all_excel)
     # 进行浏览器截图
     ScreenCapture.web_driver_screen_capture()
+    # 注意文件路径
+    SendEmail.send_report('../configure.conf')
 
