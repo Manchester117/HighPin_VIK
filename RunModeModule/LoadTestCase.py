@@ -68,7 +68,6 @@ def load_test_case_for_excel():
         print("没有需要执行的测试用例(Excel)")
     # 返回所有测试数据
     total_test_list = ReadExcelData.get_total_test_data(excel_work_book_list)
-    # print(json.dumps(total_test_list))
     return total_test_list
 
 if __name__ == "__main__":
