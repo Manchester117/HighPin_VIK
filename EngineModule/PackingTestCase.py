@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
+
 __author__ = 'Administrator'
+
+import json
 
 
 def packing_test_case(test_case_list):
@@ -13,9 +16,10 @@ def packing_test_case(test_case_list):
     corr_list = []
     verify_list = []
     for item in test_case_list:
+        # print(json.dumps(item))
         title_list.append(item['title'])
         req_data_list.append(item['data'])
-        corr_list.append(item['corr_params'])
+        corr_list.append(item['corrParams'])
         verify_list.append(item['verify'])
 
     return title_list, req_data_list, corr_list, verify_list
