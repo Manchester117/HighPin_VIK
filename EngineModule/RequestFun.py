@@ -18,6 +18,7 @@ def test_get_fun(test_case):
         headers=test_case['headers'],
         cookies=test_case['cookies'],
     )
+    requests.session().close()
     return resp
 
 
@@ -35,4 +36,5 @@ def test_post_fun(test_case):
         headers=test_case['headers'],
         cookies=test_case['cookies'],
     )
+    requests.session().close()
     return resp
