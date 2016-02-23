@@ -2,6 +2,7 @@
 __author__ = 'Peng.Zhao'
 
 import requests
+import time
 
 
 def test_get_fun(test_case):
@@ -19,6 +20,7 @@ def test_get_fun(test_case):
         cookies=test_case['cookies'],
     )
     requests.session().close()
+    time.sleep(1)
     return resp
 
 
@@ -37,4 +39,5 @@ def test_post_fun(test_case):
         cookies=test_case['cookies'],
     )
     requests.session().close()
+    time.sleep(1)
     return resp
