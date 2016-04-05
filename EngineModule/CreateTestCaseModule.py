@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Peng.Zhao'
 
-import json
 import unittest
 from EngineModule import PackingTestCase
 from EngineModule import TestFunWrapper
@@ -13,7 +12,6 @@ def create_test_case_class(test_module):
     :param test_module: 测试用例的数据对象
     :return: 单个测试类
     """
-    # print(json.dumps(test_module.test_case_list))
     # 载入参数,根据测试用例中的item,分别获取4个列表
     title_list, req_data_list, corr_list, verify_list = PackingTestCase.packing_test_case(test_module.test_case_list)
     # 创建方法字典
@@ -66,4 +64,3 @@ def create_test_case_class_for_excel(test_sheet_tuple):
     single_test_class = type(class_name, (unittest.TestCase,), test_member_dict)
     # single_test_class = type(name_list[2], (unittest.TestCase,), test_member_dict)
     return single_test_class
-

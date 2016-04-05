@@ -25,7 +25,7 @@ def get_total_test_data(work_book_list):
             # 用字典来确定测试类
             test_case_dict[sheet_name] = step_list
         total_test_list.append(test_case_dict)
-    # print(json.dumps(total_test_list))
+    # print(json.dumps(total_test_list, ensure_ascii=False))
     return total_test_list
 
 
@@ -64,7 +64,7 @@ def get_read_index(work_sheet):
     for begin_end in begin_end_index_list:
         read_cell(work_sheet, sheet_step_list[index], begin_end[0], begin_end[1])
         index += 1
-    # print(sheet_step_list)
+    # print(json.dumps(sheet_step_list, ensure_ascii=False))
     return sheet_step_list
 
 

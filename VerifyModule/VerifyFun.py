@@ -11,6 +11,8 @@ def verify_function(self, resp_content):
     index = self.__class__.index
     # 如果接口验证列表不为None并且返回也不为None,则进行验证判断
     if self.verify_list[index] is not None and resp_content is not None:
+        # 去掉报告中\r\n
+        resp_content = resp_content.replace('\r\n', '')
         for verify_item in self.verify_list[index]:
             if verify_item[0] == 'isContain':
                 self.assertIn(verify_item[1], resp_content)

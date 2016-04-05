@@ -18,9 +18,10 @@ def test_get_fun(test_case):
         json=test_case['json'],
         headers=test_case['headers'],
         cookies=test_case['cookies'],
+        timeout=60
     )
     requests.session().close()
-    time.sleep(1)
+    # time.sleep(1)
     return resp
 
 
@@ -37,7 +38,8 @@ def test_post_fun(test_case):
         json=test_case['json'],
         headers=test_case['headers'],
         cookies=test_case['cookies'],
+        timeout=60
     )
     requests.session().close()
-    time.sleep(1)
+    # time.sleep(1)
     return resp

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 __author__ = 'Peng.Zhao'
 
 import os
@@ -32,7 +31,7 @@ from EmailNotice import SendEmail
 #         test_all_suite.addTests(test_suite)
 #
 #     now_time = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-#     save_report_path = os.path.abspath('../ReportAndLog/Report')
+#     save_report_path = os.path.abspath('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/Report')
 #     file_name = save_report_path + '/result_' + now_time + '.html'
 #     with open(file_name, 'wb') as file_open:
 #         runner = HTMLTestRunner.HTMLTestRunner(stream=file_open, title='测试结果', description='测试报告')
@@ -41,12 +40,13 @@ from EmailNotice import SendEmail
 #     # 进行浏览器截图
 #     ScreenCapture.web_driver_screen_capture()
 #     # 注意文件路径
-#     SendEmail.send_report('../configure.conf')
+#     SendEmail.send_report('D:/CI_Program/Python_Program/HighPin_VIK/configure.conf')
 
 
 if __name__ == "__main__":
     # 载入测试用例
     total_test_list = LoadTestCase.load_test_case_for_excel()
+    # print(json.dumps(total_test_list))
     # 定义所有Excel的TestSuite
     test_suite_for_all_excel = unittest.TestSuite()
     for test_workbook_dict in total_test_list:
@@ -68,7 +68,7 @@ if __name__ == "__main__":
         test_suite_for_all_excel.addTests(test_suite_for_single_excel)
 
     now_time = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    save_report_path = os.path.abspath('../ReportAndLog/Report')
+    save_report_path = os.path.abspath('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/Report')
     file_name = save_report_path + '/result_' + now_time + '.html'
     with open(file_name, 'wb') as file_open:
         runner = HTMLTestRunner.HTMLTestRunner(stream=file_open, title='测试结果', description='测试报告')
@@ -77,5 +77,4 @@ if __name__ == "__main__":
     # 进行浏览器截图
     ScreenCapture.web_driver_screen_capture()
     # 注意文件路径
-    SendEmail.send_report('../configure.conf')
-
+    SendEmail.send_report('D:/CI_Program/Python_Program/HighPin_VIK/configure.conf')

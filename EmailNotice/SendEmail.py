@@ -28,29 +28,17 @@ def send_email(parse_info):
     sender = parse_info.get('email_info', 'sender')
     receiver = parse_info.get('email_info', 'receiver')
     subject = parse_info.get('email_info', 'subject')
-    content = parse_info.get('email_info', 'content')
 
     # 定义邮件框架
     msg = MIMEMultipart()
-
-    # # 添加图片附件
-    # report_name = select_report('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/ScreenCapture/')
-    # att_obj = MIMEText(open('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/ScreenCapture/' + report_name, 'rb').read(), _subtype='base64', _charset='utf-8')
-    # # att_obj["Content-Type"] = 'application/octet-stream'
-    # att_obj["Content-Disposition"] = 'attachment; filename="' + report_name + '"'
-    # msg.attach(att_obj)
-    #
-    # # 添加正文--如果附件和正文共存必须指明_subtype/_charset
-    # cont_obj = MIMEText(content, _subtype='plain', _charset='utf-8')
-    # msg.attach(cont_obj)
 
     # 添加邮件正文(HTML)
     mst_text = MIMEText(HtmlTemplate.html_template, 'html', 'utf-8')
     msg.attach(mst_text)
 
     # 读取报告图片
-    image_name = select_report('../ReportAndLog/ScreenCapture/')
-    fp_image = open('../ReportAndLog/ScreenCapture/' + image_name, 'rb')
+    image_name = select_report('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/ScreenCapture/')
+    fp_image = open('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/ScreenCapture/' + image_name, 'rb')
     msg_image = MIMEImage(fp_image.read())
     fp_image.close()
 
@@ -66,16 +54,16 @@ def send_email(parse_info):
     receiver_list = receiver.split(',')
 
     # 发送邮件(SSL)
-    smtp = smtplib.SMTP_SSL(host=host, port=port)
-    smtp.login(username, password)
-    smtp.sendmail(sender, receiver_list, msg.as_string())
-    smtp.quit()
-
-    # 发送邮件
-    # smtp = smtplib.SMTP(host=host, port=port)
+    # smtp = smtplib.SMTP_SSL(host=host, port=port)
     # smtp.login(username, password)
     # smtp.sendmail(sender, receiver_list, msg.as_string())
     # smtp.quit()
+
+    # 发送邮件
+    smtp = smtplib.SMTP(host=host, port=port)
+    smtp.login(username, password)
+    smtp.sendmail(sender, receiver_list, msg.as_string())
+    smtp.quit()
 
 
 def select_report(file_path):

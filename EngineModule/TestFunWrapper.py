@@ -31,7 +31,7 @@ def test_wrapper_fun(self):
         VerifyFun.verify_function(self, resp_content)
         logging.info('验证接口: ' + self.title_list[self.__class__.index] + '--测试通过,返回状态码: ' + str(resp.status_code))
     else:
-        logging.info('验证接口: ' + self.title_list[self.__class__.index] + '--返回状态码错误: ' + str(resp.status_code))
+        logging.info('验证接口: ' + self.title_list[self.__class__.index] + '--返回状态码: ' + str(resp.status_code))
         resp.raise_for_status()
 
     # 如果返回值不为None,则执行关联参数的替换操作
