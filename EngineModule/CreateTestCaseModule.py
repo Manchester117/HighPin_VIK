@@ -37,14 +37,14 @@ def create_test_case_class(test_module):
     return single_test_class
 
 
-def create_test_case_class_for_excel(test_sheet_tuple):
+def create_test_case_class_for_file(test_tuple):
     """
-    :description: 创建测试用例类
-    :param test_sheet_tuple: 获取单个Sheet页的名称和数据
+    :description: 创建测试用例类(兼容XML/Excel)
+    :param test_tuple: 获取单个测试数据文件的名称和数据
     :return: 返回测试类
     """
     # 载入参数,根据测试用例中的item,分别获取4个列表
-    title_list, req_data_list, corr_list, verify_list = PackingTestCase.packing_test_case(test_sheet_tuple[1])
+    title_list, req_data_list, corr_list, verify_list = PackingTestCase.packing_test_case(test_tuple[1])
     # 创建方法字典
     test_member_dict = dict()
     test_member_dict['title_list'] = title_list
@@ -58,7 +58,7 @@ def create_test_case_class_for_excel(test_sheet_tuple):
         test_member_dict[test_case_title] = TestFunWrapper.test_wrapper_fun
 
     # 获取类名
-    class_name = test_sheet_tuple[0]
+    class_name = test_tuple[0]
 
     # 创建测试类
     single_test_class = type(class_name, (unittest.TestCase,), test_member_dict)

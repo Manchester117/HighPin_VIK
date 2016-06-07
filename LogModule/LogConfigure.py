@@ -10,7 +10,7 @@ now_time = datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',
-                    filename='D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/Log/test_log_' + now_time + '.log',
+                    filename='ReportAndLog/Log/test_log_' + now_time + '.log',
                     filemode='w')
 
 # 创建一个StreamHandler

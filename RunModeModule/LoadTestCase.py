@@ -6,6 +6,7 @@ import json
 import importlib
 from openpyxl.reader.excel import load_workbook
 from ReadTestCaseExcel import ReadExcelData
+from ReadTestCaseXml import ReadXmlData
 
 
 def load_test_case():
@@ -17,7 +18,7 @@ def load_test_case():
     test_list = []
 
     # 获取当前TestCase的路径
-    test_case_path = os.path.abspath('D:/CI_Program/Python_Program/HighPin_VIK/TestCase/')
+    test_case_path = os.path.abspath('TestCase')
 
     # 获取当前TestCase中的文件列表
     test_case_file_list = os.listdir(test_case_path)
@@ -50,7 +51,7 @@ def load_test_case_for_excel():
     excel_work_book_list = []
 
     # 获取当前TestCase的路径(Excel)
-    test_case_path = os.path.abspath('D:/CI_Program/Python_Program/HighPin_VIK/TestCase/')
+    test_case_path = os.path.abspath('TestCase')
 
     # 获取当前TestCase中的文件列表(Excel)
     test_case_excel_list = os.listdir(test_case_path)
@@ -68,3 +69,35 @@ def load_test_case_for_excel():
     total_test_list = ReadExcelData.get_total_test_data(excel_work_book_list)
     # print(total_test_list)
     return total_test_list
+
+
+def load_test_case_for_xml():
+    """
+    :description: 载入测试用例Excel
+    :return: 返回所有测试数据结构
+    """
+    # 定义测试用例列表用于存放xml
+    xml_list = []
+
+    # 获取当前TestCase的路径(xml)
+    test_case_path = os.path.abspath('TestCase')
+
+    # 获取当前TestCase中的文件列表(xml)
+    test_case_xml_list = os.listdir(test_case_path)
+
+    # 过滤其他文件,将xml文件放置到列表中
+    if len(test_case_xml_list) > 0:
+        for test_xml in test_case_xml_list:
+            # 如果文件后缀是.xml,那么就把这个文件放置到列表当中
+            if test_xml.startswith('TestCase') and test_xml.endswith('.xml'):
+                xml_absolute_path = test_case_path + "\\" + test_xml
+                xml_list.append(xml_absolute_path)
+    else:
+        print("没有需要执行的测试用例(xml)")
+    # 返回所有测试数据
+    total_test_list = ReadXmlData.get_total_test_data(xml_list)
+    # print(total_test_list)
+    return total_test_list
+
+if __name__ == '__main__':
+    load_test_case_for_xml()

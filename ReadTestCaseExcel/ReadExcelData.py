@@ -16,7 +16,7 @@ def get_total_test_data(work_book_list):
     for work_book in work_book_list:
         # 获取每个sheet的名称
         sheet_name_list = work_book.get_sheet_names()
-        # 每个Excel的测试数据蚁Sheet为单位,存储在字典当中
+        # 每个Excel的测试数据以Sheet为单位,存储在字典当中
         test_case_dict = {}
         # 遍历每个sheet页
         for sheet_name in sheet_name_list:
@@ -25,7 +25,8 @@ def get_total_test_data(work_book_list):
             # 用字典来确定测试类
             test_case_dict[sheet_name] = step_list
         total_test_list.append(test_case_dict)
-    # print(json.dumps(total_test_list, ensure_ascii=False))
+    print(json.dumps(total_test_list, ensure_ascii=False))
+    print(total_test_list)
     return total_test_list
 
 
@@ -65,6 +66,7 @@ def get_read_index(work_sheet):
         read_cell(work_sheet, sheet_step_list[index], begin_end[0], begin_end[1])
         index += 1
     # print(json.dumps(sheet_step_list, ensure_ascii=False))
+    # print(sheet_step_list)
     return sheet_step_list
 
 
