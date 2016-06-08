@@ -35,7 +35,7 @@ from EmailNotice import SendEmail
 #
 #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
-#                 佛祖保佑假期线上无BUG
+#                 佛祖保佑       永无BUG
 
 
 # if __name__ == '__main__':
