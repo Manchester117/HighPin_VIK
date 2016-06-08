@@ -18,7 +18,7 @@ def get_total_test_data(xml_list):
         xml_root = doc.getroot()
         single_test = get_single_test_data(xml_root)
         total_test_list.append(single_test)
-    # print(json.dumps(total_test_list, ensure_ascii=False))
+    print(json.dumps(total_test_list, ensure_ascii=False))
     # print(total_test_list)
     return total_test_list
 
@@ -67,13 +67,15 @@ def get_request_data(leaf_request_data):
         if item.tag == 'url' or item.tag == 'method' or item.tag == 'json':
             request_data[item.tag] = item.text
         if item.tag == 'getParams' or item.tag == 'postParams' or item.tag == 'headers' or item.tag == 'cookies':
-            if item.text is not None and item.text.find('\n') == -1:
-                param_dict = dict()
-                for param in item:
-                    param_dict[param.get('name')] = param.text
-                request_data[item.tag] = param_dict
-            else:
-                request_data[item.tag] = None
+            param_dict = dict()
+            for param in item.iter():
+                if param.text is not None and param.text.find('\n') == -1:
+                    # 替换Xml中的'&amp;'
+                    param_content = param.text.replace('&amp;', '&')
+                    param_dict[param.get('name')] = param_content
+            if param_dict.__len__() == 0:
+                param_dict = None
+            request_data[item.tag] = param_dict
     return request_data
 
 
@@ -82,11 +84,12 @@ def get_correlation_data(leaf_corr_data):
     :description: 从xml中获取需要关联的正则表达式
     :return: 返回关联的dict
     """
-    corr_data = None
-    if leaf_corr_data.text is not None and leaf_corr_data.text.find('\n') == -1:
-        corr_data = dict()
-        for item in leaf_corr_data:
+    corr_data = dict()
+    for item in leaf_corr_data.iter():
+        if item.text is not None and item.text.find('\n') == -1:
             corr_data[item.get('name')] = item.text
+    if corr_data.__len__() == 0:
+        corr_data = None
     return corr_data
 
 
@@ -95,12 +98,13 @@ def get_verify_data(leaf_verify_data):
     :description: 从xml中获取需要验证的数据
     :return: 返回验证list
     """
-    verify_data = None
-    if leaf_verify_data.text is not None and leaf_verify_data.text.find('\n') == -1:
-        verify_data = list()
-        for item in leaf_verify_data:
+    verify_data = list()
+    for item in leaf_verify_data:
+        if item in leaf_verify_data.iter():
             check_tuple = (item.get('name'), item.text)
             verify_data.append(check_tuple)
+    if verify_data.__len__() == 0:
+        verify_data = None
     return verify_data
 
 

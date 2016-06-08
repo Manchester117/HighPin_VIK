@@ -12,6 +12,32 @@ from RunModeModule import LoadTestCase
 from WebdriverOperation import ScreenCapture
 from EmailNotice import SendEmail
 
+#
+#                       _oo0oo_
+#                      o8888888o
+#                      88" . "88
+#                      (| -_- |)
+#                      0\  =  /0
+#                    ___/`---'\___
+#                  .' \\|     |#  '.
+#                 / \\|||  :  |||#  \
+#                / _||||| -:- |||||- \
+#               |   | \\\  -  #/ |    |
+#               | \_|  ''\---/''  |_/ |
+#               \  .-\__  '-'  ___/-. /
+#             ___'. .'  /--.--\  `. .'___
+#          ."" '<  `.___\_<|>_/___.' >' "".
+#         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+#         \  \ `_.   \_ __\ /__ _/   .-` /  /
+#     =====`-.____`.___ \_____/___.-`___.-'=====
+#                       `=---='
+#
+#
+#     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#                 佛祖保佑假期线上无BUG
+
+
 # if __name__ == '__main__':
 #     """
 #     :description: 使用Python数据结构运行测试
@@ -123,5 +149,5 @@ if __name__ == "__main__":
     # 进行浏览器截图
     ScreenCapture.web_driver_screen_capture()
     # 注意文件路径
-    # SendEmail.send_report('D:/CI_Program/Python_Program/HighPin_VIK/configure.conf')
+    SendEmail.send_report('configure.conf')
 

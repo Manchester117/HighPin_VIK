@@ -89,14 +89,14 @@ def load_test_case_for_xml():
     if len(test_case_xml_list) > 0:
         for test_xml in test_case_xml_list:
             # 如果文件后缀是.xml,那么就把这个文件放置到列表当中
-            if test_xml.startswith('TestCase') and test_xml.endswith('.xml'):
+            if test_xml.startswith('Test_') and test_xml.endswith('.xml'):
                 xml_absolute_path = test_case_path + "\\" + test_xml
                 xml_list.append(xml_absolute_path)
     else:
         print("没有需要执行的测试用例(xml)")
     # 返回所有测试数据
     total_test_list = ReadXmlData.get_total_test_data(xml_list)
-    # print(total_test_list)
+    print(json.dumps(total_test_list, ensure_ascii=False))
     return total_test_list
 
 if __name__ == '__main__':
