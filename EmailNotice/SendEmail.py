@@ -46,13 +46,14 @@ def send_email(parse_info):
     msg_image.add_header('Content-ID', '<image1>')
     msg.attach(msg_image)
 
-    # 添加邮件附件(HTML报告)
-    html_name = select_report('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/Report/')
-    fp_report = open('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/Report/' + html_name, 'rb')
-    msg_html = MIMEText(fp_report.read(), 'base64', 'utf-8')
-    msg_html['Content-Type'] = 'application/octet-stream'
-    msg_html['Content-Disposition'] = 'attachment; filename=' + html_name
-    msg.attach(msg_html)
+    # 添加邮件附件(图片附件)
+    image_name = select_report('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/ScreenCapture/')
+    fp_image = open('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/ScreenCapture/' + image_name, 'rb')
+    msg_image_attach = MIMEText(fp_image.read(), 'base64', 'utf-8')
+    msg_image_attach['Content-Type'] = 'application/octet-stream'
+    msg_image_attach['Content-Disposition'] = 'attachment; filename=' + image_name
+    msg.attach(msg_image_attach)
+    fp_image.close()
 
     # 添加邮件标题
     msg['Subject'] = Header(subject, 'utf-8')
