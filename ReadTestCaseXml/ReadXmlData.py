@@ -65,7 +65,7 @@ def get_request_data(leaf_request_data):
     request_data = dict()
     for item in leaf_request_data.iter():
         if item.tag == 'url' or item.tag == 'method' or item.tag == 'json':
-            request_data[item.tag] = item.text.rstrip()
+            request_data[item.tag] = item.text
         if item.tag == 'getParams' or item.tag == 'postParams' or item.tag == 'headers' or item.tag == 'cookies':
             param_dict = dict()
             for param in item.iter():
