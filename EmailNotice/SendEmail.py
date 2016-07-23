@@ -19,6 +19,11 @@ def read_config(conf_path):
 
 
 def send_email(parse_info):
+    """
+    :description: 编辑邮件正文,并且发送邮件
+    :param parse_info: 邮箱配置信息
+    :return:
+    """
     host = parse_info.get('smtp_host_info', 'host')
     port = parse_info.getint('smtp_host_info', 'port')
 
@@ -63,16 +68,16 @@ def send_email(parse_info):
     receiver_list = receiver.split(',')
 
     # 发送邮件(SSL)
-    # smtp = smtplib.SMTP_SSL(host=host, port=port)
-    # smtp.login(username, password)
-    # smtp.sendmail(sender, receiver_list, msg.as_string())
-    # smtp.quit()
-
-    # 发送邮件
-    smtp = smtplib.SMTP(host=host, port=port)
+    smtp = smtplib.SMTP_SSL(host=host, port=port)
     smtp.login(username, password)
     smtp.sendmail(sender, receiver_list, msg.as_string())
     smtp.quit()
+
+    # 发送邮件
+    # smtp = smtplib.SMTP(host=host, port=port)
+    # smtp.login(username, password)
+    # smtp.sendmail(sender, receiver_list, msg.as_string())
+    # smtp.quit()
 
 
 def select_report(file_path):
