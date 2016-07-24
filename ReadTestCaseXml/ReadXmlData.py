@@ -64,15 +64,23 @@ def get_request_data(leaf_request_data):
     """
     request_data = dict()
     for item in leaf_request_data.iter():
-        if item.tag == 'url' or item.tag == 'method' or item.tag == 'json':
+        if item.tag == 'url' or item.tag == 'method':
             request_data[item.tag] = item.text
+        if item.tag == 'json':
+            if item.text is not None:
+                # 加入strip删除'\n'
+                request_data[item.tag] = item.text.strip()
+            else:
+                request_data[item.tag] = None
         if item.tag == 'getParams' or item.tag == 'postParams' or item.tag == 'headers' or item.tag == 'cookies':
             param_dict = dict()
             for param in item.iter():
-                if param.text is not None and param.text.find('\n') == -1:
-                    # 替换Xml中的'&amp;',并去掉两边的空白字符
+                if param.text is not None:
+                    # 替换xml中的'&amp;',并去掉两边的空白字符
                     param_content = param.text.replace('&amp;', '&')
-                    param_dict[param.get('name')] = param_content.rstrip()
+                    # 如果节点的key不为None则把参数放到param_dict当中
+                    if param.get('name') is not None:
+                        param_dict[param.get('name')] = param_content.strip()
             if param_dict.__len__() == 0:
                 param_dict = None
             request_data[item.tag] = param_dict
@@ -87,7 +95,7 @@ def get_correlation_data(leaf_corr_data):
     corr_data = dict()
     for item in leaf_corr_data.iter():
         if item.text is not None and item.text.find('\n') == -1:
-            corr_data[item.get('name')] = item.text.rstrip()
+            corr_data[item.get('name')] = item.text.strip()
     if corr_data.__len__() == 0:
         corr_data = None
     return corr_data
@@ -101,7 +109,7 @@ def get_verify_data(leaf_verify_data):
     verify_data = list()
     for item in leaf_verify_data:
         if item in leaf_verify_data.iter():
-            check_tuple = (item.get('name'), item.text.rstrip())
+            check_tuple = (item.get('name'), item.text.strip())
             verify_data.append(check_tuple)
     if verify_data.__len__() == 0:
         verify_data = None
