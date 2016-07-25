@@ -94,7 +94,7 @@ def get_correlation_data(leaf_corr_data):
     """
     corr_data = dict()
     for item in leaf_corr_data.iter():
-        if item.text is not None and item.text.find('\n') == -1:
+        if item.text is not None and item.get('name') is not None:
             corr_data[item.get('name')] = item.text.strip()
     if corr_data.__len__() == 0:
         corr_data = None
