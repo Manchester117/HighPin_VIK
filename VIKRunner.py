@@ -122,7 +122,7 @@ if __name__ == "__main__":
         # 运行测试
         runner.run(test_suite_for_all_file)
     # 进行浏览器截图
-    # ScreenCapture.web_driver_screen_capture()
+    ScreenCapture.web_driver_screen_capture()
     # 注意文件路径
     SendEmail.send_report('configure.conf')
 
