@@ -109,6 +109,14 @@ def send_email_html_content(parse_info):
     mst_text = MIMEText(report_html_content, _subtype='html', _charset='UTF-8')
     msg.attach(mst_text)
 
+    # 添加邮件附件
+    report_attach_name = select_report('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/Report/')
+    report_attach = open('D:/CI_Program/Python_Program/HighPin_VIK/ReportAndLog/Report/' + report_attach_name, 'rb')
+    mst_attach = MIMEText(report_attach.read(), 'base64', _charset='UTF-8')
+    mst_attach['Content-Type'] = 'application/octet-stream'
+    mst_attach['Content-Disposition'] = 'attachment; filename=' + report_attach_name
+    msg.attach(mst_attach)
+
     # 添加邮件标题
     msg['Subject'] = Header(subject, 'utf-8')
     msg['from'] = sender
