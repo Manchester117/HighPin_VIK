@@ -44,12 +44,13 @@ def create_test_case_class_for_file(test_tuple):
     :return: 返回测试类
     """
     # 载入参数,根据测试用例中的item,分别获取4个列表
-    title_list, req_data_list, corr_list, verify_list = PackingTestCase.packing_test_case(test_tuple[1])
+    title_list, req_data_list, corr_list, wait_seconds_list, verify_list = PackingTestCase.packing_test_case(test_tuple[1])
     # 创建方法字典
     test_member_dict = dict()
     test_member_dict['title_list'] = title_list
     test_member_dict['req_data_list'] = req_data_list
     test_member_dict['corr_list'] = corr_list
+    test_member_dict['wait_seconds_list'] = wait_seconds_list
     test_member_dict['verify_list'] = verify_list
     # 定义测试类的静态变量,用于流程型用例数据的读取
     test_member_dict['index'] = 0

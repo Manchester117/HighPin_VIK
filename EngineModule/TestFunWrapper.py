@@ -2,6 +2,7 @@
 __author__ = 'Peng.Zhao'
 
 import requests
+import time
 from EngineModule import RequestFun
 from VerifyModule import VerifyFun
 from EngineModule import CorraletionRequestParams
@@ -13,6 +14,9 @@ def test_wrapper_fun(self):
     :description: 测试用例的包装方法
     :return:
     """
+    # 使用延迟时间
+    if self.wait_seconds_list[self.__class__.index] is not None:
+        time.sleep(int(self.wait_seconds_list[self.__class__.index]))
     # 定义接收的变量(避免代码警告提示)
     resp = None
     # 根据用例中的方法类型选择对应的请求方式,并执行请求
@@ -26,7 +30,7 @@ def test_wrapper_fun(self):
     if resp.status_code == requests.codes.ok:
         resp_content = resp.content.decode('utf-8')
         # 显示请求的response(可注释掉)
-        logging.info(resp_content.replace('\r\n', ''))
+        # logging.info(resp_content.replace('\r\n', ''))
         # 加入验证方法
         VerifyFun.verify_function(self, resp_content)
         logging.info('验证接口: ' + self.title_list[self.__class__.index] + '--测试通过,返回状态码: ' + str(resp.status_code))

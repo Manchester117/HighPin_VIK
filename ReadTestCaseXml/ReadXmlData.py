@@ -18,7 +18,7 @@ def get_total_test_data(xml_list):
         xml_root = doc.getroot()
         single_test = get_single_test_data(xml_root)
         total_test_list.append(single_test)
-    print(json.dumps(total_test_list, ensure_ascii=False))
+    # print(json.dumps(total_test_list, ensure_ascii=False))
     # print(total_test_list)
     return total_test_list
 
@@ -52,6 +52,8 @@ def get_test_case_data(test_case):
             test_case_dict['data'] = get_request_data(leaf)
         if leaf.tag == 'corrParams':
             test_case_dict['corrParams'] = get_correlation_data(leaf)
+        if leaf.tag == 'waitSeconds':
+            test_case_dict['waitSeconds'] = get_wait_seconds(leaf)
         if leaf.tag == 'verify':
             test_case_dict['verify'] = get_verify_data(leaf)
     return test_case_dict
@@ -99,6 +101,14 @@ def get_correlation_data(leaf_corr_data):
     if corr_data.__len__() == 0:
         corr_data = None
     return corr_data
+
+
+def get_wait_seconds(leaf_wait_seconds):
+    """
+    :description: 从xml中获取每一步的暂停时间
+    :return: 返回暂停时间
+    """
+    return leaf_wait_seconds.text
 
 
 def get_verify_data(leaf_verify_data):
