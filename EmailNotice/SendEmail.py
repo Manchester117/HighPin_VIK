@@ -126,6 +126,7 @@ def send_email_html_content(parse_info):
 
     # 发送邮件(SSL)
     smtp = smtplib.SMTP_SSL(host=host, port=port)
+    # smtp = smtplib.SMTP(host=host, port=port)
     smtp.login(username, password)
     smtp.sendmail(sender, receiver_list, msg.as_string())
     smtp.quit()

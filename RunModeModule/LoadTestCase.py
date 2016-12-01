@@ -2,6 +2,7 @@
 __author__ = 'Peng.Zhao'
 
 import os
+import sys
 import json
 import importlib
 from openpyxl.reader.excel import load_workbook
@@ -60,7 +61,7 @@ def load_test_case_for_excel():
         for test_excel in test_case_excel_list:
             # 如果文件后缀是.xlsx,那么就把这个文件转化为WorkBook对象,并存入列表
             if test_excel.endswith('.xlsx'):
-                excel_absolute_path = test_case_path + "\\" + test_excel
+                excel_absolute_path = test_case_path + "/" + test_excel
                 work_book = load_workbook(filename=excel_absolute_path)
                 excel_work_book_list.append(work_book)
     else:
@@ -73,7 +74,7 @@ def load_test_case_for_excel():
 
 def load_test_case_for_xml():
     """
-    :description: 载入测试用例Excel
+    :description: 载入测试用例XML
     :return: 返回所有测试数据结构
     """
     # 定义测试用例列表用于存放xml
@@ -90,7 +91,7 @@ def load_test_case_for_xml():
         for test_xml in test_case_xml_list:
             # 如果文件后缀是.xml,那么就把这个文件放置到列表当中
             if test_xml.startswith('Test_') and test_xml.endswith('.xml'):
-                xml_absolute_path = test_case_path + "\\" + test_xml
+                xml_absolute_path = test_case_path + "/" + test_xml
                 xml_list.append(xml_absolute_path)
     else:
         print("没有需要执行的测试用例(xml)")
