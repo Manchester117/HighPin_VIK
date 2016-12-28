@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b42d2964-37cc-49e9-8a08-6430e99cb02d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EngineModule/TestFunWrapper.py" afterPath="$PROJECT_DIR$/EngineModule/TestFunWrapper.py" />
     </list>
     <list id="9e284760-dba1-4d00-bc40-a4d739b9fb79" name="New changelist" comment="" />
     <ignored path="VIK.iws" />
@@ -111,8 +110,8 @@
       <file leaf-file-name="TestFunWrapper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EngineModule/TestFunWrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+            <state relative-caret-position="594">
+              <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
               <folding>
                 <element signature="e#50#65#0" expanded="true" />
               </folding>
@@ -864,7 +863,14 @@
       <option name="project" value="LOCAL" />
       <updated>1480593834916</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="兼容Linux...">
+      <created>1482921903480</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1482921903480</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1290,8 +1296,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EngineModule/TestFunWrapper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        <state relative-caret-position="594">
+          <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
           <folding>
             <element signature="e#50#65#0" expanded="true" />
           </folding>
