@@ -110,8 +110,8 @@
       <file leaf-file-name="TestFunWrapper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EngineModule/TestFunWrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
+            <state relative-caret-position="254">
+              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
               <folding>
                 <element signature="e#50#65#0" expanded="true" />
               </folding>
@@ -870,7 +870,14 @@
       <option name="project" value="LOCAL" />
       <updated>1482921903480</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="兼容Linux...">
+      <created>1482922005908</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1482922005908</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1296,8 +1303,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EngineModule/TestFunWrapper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
+        <state relative-caret-position="254">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
           <folding>
             <element signature="e#50#65#0" expanded="true" />
           </folding>
