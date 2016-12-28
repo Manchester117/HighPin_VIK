@@ -28,7 +28,7 @@ def test_wrapper_fun(self):
     # 定义接受返回之的变量(避免代码警告提示)
     resp_content = None
     if resp.status_code == requests.codes.ok:
-        resp_content = resp.content.decode('utf-8')
+        resp_content = resp.content.decode('utf-8').strip()
         # 显示请求的response(可注释掉)
         # logging.info(resp_content.replace('\r\n', ''))
         # 加入验证方法
