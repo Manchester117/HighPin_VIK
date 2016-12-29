@@ -75,7 +75,9 @@ def get_request_data(leaf_request_data):
         if item.tag == 'json':
             if item.text is not None:
                 # 加入strip删除'\n'
-                request_data[item.tag] = item.text.strip()
+                # 需要将json字符串转为字典(使用eval)
+                json_data = eval(item.text.strip())
+                request_data[item.tag] = json_data
             else:
                 request_data[item.tag] = None
         if item.tag == 'getParams' or item.tag == 'postParams' or item.tag == 'headers' or item.tag == 'cookies':
