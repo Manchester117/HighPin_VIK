@@ -71,5 +71,8 @@ def corr_replace_dict(corr_params, key, true_req_params_list):
     # 执行参数替换
     for req_params_item in true_req_params_list:
         for req_params_key, req_params_value in req_params_item.items():
-            if key in req_params_item[req_params_key]:
-                req_params_item[req_params_key] = corr_params[key]
+            # 如果关联的值是字符串,则用以下逻辑进行替换关联值
+            if isinstance(req_params_item[req_params_key], str):
+                if key in req_params_item[req_params_key]:
+                    req_params_item[req_params_key] = corr_params[key]
+            # 如果关联的值是数字,还需要进一步改进代码
