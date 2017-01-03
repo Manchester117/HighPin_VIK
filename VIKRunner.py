@@ -146,9 +146,11 @@ if __name__ == "__main__":
     with open(file_name, 'wb') as file_open:
         runner = HTMLTestRunner.HTMLTestRunner(stream=file_open, title='测试结果', description='测试报告')
         # 运行测试
-        runner.run(test_suite_for_all_file)
+        result = runner.run(test_suite_for_all_file)
+        error_count = result.error_count
+        failure_count = result.failure_count
     # 进行浏览器截图
     ScreenCapture.web_driver_screen_capture()
     # 注意文件路径
-    SendEmail.send_report('configure.conf')
+    SendEmail.send_report('configure.conf', error_count, failure_count)
 

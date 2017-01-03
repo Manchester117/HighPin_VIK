@@ -79,7 +79,7 @@ def read_config(conf_path):
 #     # smtp.sendmail(sender, receiver_list, msg.as_string())
 #     # smtp.quit()
 
-def send_email_html_content(parse_info):
+def send_email_html_content(parse_info, flag):
     """
     :description: 编辑邮件正文,并且发送邮件
     :param parse_info: 邮箱配置信息
@@ -118,7 +118,10 @@ def send_email_html_content(parse_info):
     msg.attach(mst_attach)
 
     # 添加邮件标题
-    msg['Subject'] = Header(subject, 'utf-8')
+    if flag:
+        msg['Subject'] = Header(subject, 'UTF-8')
+    else:
+        msg['Subject'] = Header('Error!!!-' + subject, 'UTF-8')
     msg['from'] = sender
     msg['to'] = receiver
     # 给多个人发送需要使用列表
@@ -139,7 +142,11 @@ def select_report(file_path):
     return report_list[-1]
 
 
-def send_report(configure_path):
+def send_report(configure_path, error_count, failure_count):
     p_info = read_config(configure_path)
     # send_email(p_info)
-    send_email_html_content(p_info)
+    # 如果报告中没有出现错误,则flag置为True.
+    if error_count == 0 and failure_count == 0:
+        send_email_html_content(p_info, True)
+    else:
+        send_email_html_content(p_info, False)
