@@ -9,6 +9,7 @@ import HTMLTestRunner
 from EngineModule.CreateTestCaseModule import create_test_case_class
 from EngineModule.CreateTestCaseModule import create_test_case_class_for_file
 from RunModeModule import LoadTestCase
+from ReportStatistics import StatisticsReport
 from WebdriverOperation import ScreenCapture
 from EmailNotice import SendEmail
 
@@ -149,8 +150,10 @@ if __name__ == "__main__":
         result = runner.run(test_suite_for_all_file)
         error_count = result.error_count
         failure_count = result.failure_count
+    # 生成错误统计报告
+    StatisticsReport.run_statistics_report(file_name)
     # 进行浏览器截图
-    ScreenCapture.web_driver_screen_capture()
+    # ScreenCapture.web_driver_screen_capture()
     # 注意文件路径
-    SendEmail.send_report('configure.conf', error_count, failure_count)
+    # SendEmail.send_report('configure.conf', error_count, failure_count)
 

@@ -117,6 +117,13 @@ def send_email_html_content(parse_info, flag):
     mst_attach['Content-Disposition'] = 'attachment; filename=' + report_attach_name
     msg.attach(mst_attach)
 
+    # 添加Bug数据统计
+    statistics_attach = open('../ReportAndLog/Statistics/Online_System_Status_Statistics.xlsx', 'rb')
+    mst_attach = MIMEText(statistics_attach.read(), 'base64', _charset='UTF-8')
+    mst_attach['Content-Type'] = 'application/octet-stream'
+    mst_attach['Content-Disposition'] = 'attachment; filename=Online_System_Status_Statistics.xlsx'
+    msg.attach(mst_attach)
+
     # 添加邮件标题
     if flag:
         msg['Subject'] = Header(subject, 'UTF-8')

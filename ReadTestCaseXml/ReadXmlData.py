@@ -14,10 +14,10 @@ def get_total_test_data(xml_list):
     """
     total_test_list = []
     for xml in xml_list:
-        xml_file = open(xml, mode='r', encoding='UTF-8')
-        xml_line = xml_file.readlines()
-        for line in range(0, len(xml_line)):
-            print(line.decode('UTF-8'))
+        # xml_file = open(xml, mode='r', encoding='UTF-8')
+        # xml_line = xml_file.readlines()
+        # for line in range(0, len(xml_line)):
+        #     print(line.decode('UTF-8'))
         doc = etree.ElementTree(file=xml)
         xml_root = doc.getroot()
         single_test = get_single_test_data(xml_root)
